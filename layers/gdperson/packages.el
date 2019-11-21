@@ -31,14 +31,9 @@
 
 (defconst gdperson-packages
   '(
-    helm
-    helm-ag
-    projectile
     expand-region
-    cmake-ide
     )
   )
-
 (defun gdperson/post-init-expand-region ()
   (with-eval-after-load 'expand-region
     (when (configuration-layer/package-used-p 'helm-ag)
