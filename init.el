@@ -51,9 +51,7 @@ values."
      (c-c++ :variables
             c-c++-backend 'rtags)
      (rust :variables rust-backend 'racer)
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
+     java
      spell-checking
      syntax-checking
      version-control
@@ -112,6 +110,7 @@ values."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
+   dotspacemacs-mode-line-theme 'spacemacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -313,7 +312,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq-default git-magit-status-fullscreen t)
-  )
+  (setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
+  (load custom-file 'no-error 'no-message)
+ )
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -322,8 +323,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq-default
-   c-basic-offset 4)
+  (setq-default c-basic-offset 4)
+  (spacemacs/toggle-mode-line-battery-on)
+  (spacemacs/toggle-display-time-on)
+  (delete-selection-mode t)
   (global-git-commit-mode t)
   (global-set-key (kbd "<backtab>") 'un-indent-by-removing-4-spaces)
   (defun un-indent-by-removing-4-spaces ()
@@ -340,5 +343,3 @@ you should place your code here."
 
   )
 
-(setq custom-file (expand-file-name "custom.el" dotspacemacs-directory))
-(load custom-file 'no-error 'no-message)
