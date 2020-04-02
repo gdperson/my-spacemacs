@@ -30,7 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(lua
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -47,11 +47,17 @@ values."
      go
      lsp
      (cmake :variables
-            cmake-enable-cmake-ide-support t)
+            cmake-enable-cmake-ide-support nil)
      (c-c++ :variables
             c-c++-backend 'rtags)
      (rust :variables rust-backend 'racer)
+     (clojure :variables
+              clojure-enable-fancify-symbols t
+              clojure-enable-sayid t
+              clojure-enable-clj-refactor t
+              clojure-enable-linters 'clj-kondo )
      java
+     (python :variables python-backend 'anaconda)
      spell-checking
      syntax-checking
      version-control
@@ -110,7 +116,7 @@ values."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
-   dotspacemacs-mode-line-theme 'spacemacs
+   ;; dotspacemacs-mode-line-theme 'spacemacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -268,7 +274,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil 
+   dotspacemacs-line-numbers nil
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
