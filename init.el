@@ -30,12 +30,14 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(lua
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     osx
+     lua
      helm
      auto-completion
      better-defaults
@@ -44,8 +46,8 @@ values."
      markdown
      protobuf
      org
-     go
      lsp
+     (go :variables go-backend 'go-mode)
      (cmake :variables
             cmake-enable-cmake-ide-support nil)
      (c-c++ :variables
@@ -63,6 +65,7 @@ values."
      version-control
      gdperson
      (chinese :variables chinese-enable-youdao-dict t)
+     themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -347,5 +350,7 @@ you should place your code here."
         (when (looking-at (concat "^" (make-string tab-width ?\ )))
           (replace-match "")))))
 
+  (add-to-list 'exec-path "~/.gvm/gos/go1.13/bin/")
+  (add-to-list 'exec-path "~/work/go/bin/")
   )
 
